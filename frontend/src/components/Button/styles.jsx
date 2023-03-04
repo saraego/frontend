@@ -1,0 +1,23 @@
+import styled from "styled-components";
+
+export const Btn = styled.button`
+  width: 182.81px;
+  height: 36.13px;
+  border: none;
+  background: blue;
+  border-radius: 20px;
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  color: #eeeeee;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
+  &:active {
+    opacity: 0.4;
+  }
+`;
