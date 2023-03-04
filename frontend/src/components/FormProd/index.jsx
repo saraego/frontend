@@ -3,6 +3,7 @@ import * as yup from "yup";
 import api from "../../services/api"
 import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
+import { useProd } from "../../hooks/ProdContext";
 import { yupResolver } from "@hookform/resolvers/yup";
 import {
   Containe,
@@ -15,6 +16,9 @@ import {
 import Button from "../Button";
 
 function FormProduct() {
+
+  const {addProdutos} = useProd()
+
   const schema = yup.object({
     codigo: yup.number().required("Campo obrigatorio"),
     descricao: yup.string().required("Campo obrigatorio"),
@@ -38,6 +42,7 @@ function FormProduct() {
     },{validateStatus:()=>true})
     
     if(status === 200 || status === 201){
+        addProdutos(data)
         toast.success("item criado")
     }else if(status === 409 || 500){
         toast.error('Verifique o codigo do produto')
